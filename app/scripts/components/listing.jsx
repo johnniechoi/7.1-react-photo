@@ -4,9 +4,11 @@ var ImageListing = React.createClass({
   handleDelete: function(e){
     this.props.deleteImage(this.props.model);
   },
+  handleEdit: function(e){
+    this.props.handleEdit(this.props.model);
+  },
   render: function(){
     var imageSrc = this.props.model.get('url');
-    console.log(imageSrc);
     var imageCaption = this.props.model.get('caption');
 
     return (

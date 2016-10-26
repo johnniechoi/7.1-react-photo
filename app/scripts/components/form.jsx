@@ -53,11 +53,11 @@ var Navigation = React.createClass({
               <label htmlFor="formGroupExampleInput">Photo</label>
               <input onChange={this.handleUrlChange} name="photo" type="text" className="form-control" id="formGroupExampleInput" value={this.state.url} placeholder="www.unplash.it/600/600"/>
             </div>
-            <div className="form-group well">
+            <div className="form-group">
               <label htmlFor="formGroupExampleInput2">Caption</label>
               <input onChange={this.handleCaptionChange} name="caption" type="text" className="form-control" id="caption" value={this.state.caption} placeholder="Another beautiful day in paradise..."/>
             </div>
-            <button type="submit" className="button btn btn-success">Submit</button>
+            <button type="submit" className="button btn btn-success"> {this.props.model ? 'Edit' : 'Add'}Image</button>
           </form>
         </div>
     );

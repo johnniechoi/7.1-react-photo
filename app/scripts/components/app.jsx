@@ -12,13 +12,10 @@ var AppComponent = React.createClass({
 
     imageCollection.fetch().then(function(){
       self.setState({collection: imageCollection});
-
     });
 
     return {
-      imageToEdit: false,
       collection: imageCollection,
-      showForm: false
     };
   },
   addImage: function(imageModel){
@@ -30,40 +27,42 @@ var AppComponent = React.createClass({
     image.destroy();
     this.setState({collection: this.state.collection});
   },
+  handleEdit: function(model){
+    this.setState({imageToEdit: model, showForm: true});
+    // console.log('handleEdit');
+  },
+  editImage: function(model, data){
+    model.set(data);
+    model.save();
+    this.forceUpdate();
+  },
   render: function(){
     var self = this;
     this.setState.FormComponent
 
-    var imageList
     var imageList = this.state.collection.map(function(image){
       return (
         <Listing
           key={image.get("_id")}
           model={image}
           editImage={self.editImage}
+          handleEdit={self.handleEdit}
           deleteImage={self.deleteImage}
-
         />
       );
     });
 
     return(
       <div>
-        <header className="container-fluid main-header">
-          <a className="add-image" href="#" onClick={this.handleToggleForm}></a>
-        </header>
-
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <FormComponent model={this.state.imageToEdit} addImage={this.addImage} editImage={this.editImage}/>
             </div>
           </div>
-
           <div className="row col-md-offset-2 col-md-8 well">
             {imageList}
           </div>
-
         </div>
       </div>
       )
