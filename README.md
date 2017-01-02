@@ -4,3 +4,5 @@ Created a responsive photo saving application
 - react.js
 - backbone
 - SCSS
+- underscore
+- jQuery
