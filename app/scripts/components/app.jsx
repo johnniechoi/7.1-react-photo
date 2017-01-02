@@ -37,6 +37,7 @@ var AppComponent = React.createClass({
     this.forceUpdate();
   },
   render: function(){
+    console.log('STATE:', this.state);
     var self = this;
     this.setState.FormComponent
 
